@@ -1,9 +1,15 @@
 /* 各要素共通の設定について */
-html body {
-    height: 100%;
+html {
+    /* %表記なのはユーザーがデフォルトのfont-sizeを変えている可能性があるため  */
+    font-size: 62.5%;
+}
+
+body {
+    /* ブラウザデフォルトで16pxなので10pxとなる。
+     * remはroot(html)要素のfont-sizeからの相対的単位
+    */
+    font-size: 1.5rem;
     width: 100%;
-    display: flex;
-    justify-content: center;
 }
 
 button {
@@ -14,10 +20,16 @@ button {
     width: 100px;
     padding: 8px;
     background-color: black;
+    font-size: 1.8rem;
 }
 
 h1 {
     border-bottom: 2px rgb(31, 143, 255) solid;
+    font-size: 3.5rem;
+}
+
+h3 {
+    font-size: 2.0rem;
 }
 
 /* これないと結構スタイルが期待通りにならないので注意 */
@@ -27,6 +39,7 @@ p {
 
 a {
     text-decoration: none;
+    font-size: 1.8rem;
 }
 
 .container {
@@ -34,10 +47,16 @@ a {
     flex-direction: column;
     /* flexの向きと直交する向きの設定 */
     align-items: center;
+    margin-top: 16px;
     row-gap: 16px;
     /* 親要素でちゃんと縦横の幅を設定する */
-    max-width: 960px;
-    min-height: 1400px;
+    /* レイアウトが入りきらないためこうしている */
+    row-gap: 16px;
+    /* 
+     * 親要素でwidthを指定していないと、子要素が表示可能領域がwidthになってしまう。
+     * これは今回のように子要素（header要素は画像の表示領域の幅にあわされてしまう）で想定外のwidthとなるので、親要素には必ずwidthを指定する
+     */
+    width: 100%;
 }
 
 /* ヘッダーについて */
@@ -45,7 +64,7 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: 960px;
 }
 
 .navigation {
@@ -61,11 +80,33 @@ a {
     opacity: 0.7;
 }
 
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 48px;
+    margin-bottom: 48px;
+    /* 
+     * 親要素でwidthを指定していないと、子要素が表示可能領域がwidthになってしまう。
+     * これは今回のように子要素（section要素は画像の表示領域の幅にあわされてしまう）で想定外のwidthとなるので、親要素には必ずwidthを指定する
+     * 高さは、子要素の高さに親が合わせることになるので、高さは特に指定しなくても大丈夫
+    */
+    width: 100%;
+}
+
 /* 画像は親要素に合わせるとなると、二つクラス必要？overflowはブロック要素にしか使えなさそうだし */
 .main__image {
     height: 600px;
-    width: 100vw; /* アスペクト比を維持するために幅は自動調整 */
+    /* 
+    * 100vwだと、スクロールバーの分も入るのだが、実際には画像は表示されない部分なので横スクロールが出現してしまう。
+    * よって、htmlからbody、container、mainまでhtmlの画面いっぱいの幅を継承してここでwidth:100%とすれば、htmlの領域いっぱいに表示できるようになる
+     */
+    width: 100%; /* アスペクト比を維持するために幅は自動調整 */
     object-fit: cover; /* 必要に応じて画像の切り取り方を調整。containは表示領域に収まるように画像全体を表示する→そのため、アスペクト比の調整により表示領域に余白ができる */
+}
+
+.about__content--text {
+    padding: 8px;
 }
 
 /* Aboutについて */
@@ -73,7 +114,7 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 960px;
 }
 
 .about__content {
@@ -104,12 +145,12 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 960px;
 }
 
 .content__list {
     display: flex;
-    column-gap: 16px;
+    column-gap: 24px;
 }
 
 .content__item {
@@ -120,13 +161,15 @@ a {
 }
 
 .content__image {
-    height: 300px;
-    width: 300px;
+    height: 250px;
+    width: 250px;
     object-fit: cover;
 }
 
 .footer {
-    display: flex;
-    align-items: end;
-    height: 100px;
+    padding: 4px;
+}
+
+.footer__p {
+    font-size: 0.8rem;
 }
