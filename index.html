@@ -7,49 +7,49 @@
 </head>
 <body>
     <div class="container">
-        <div class="header">
+        <header class="header">
             <button>Profile</button>
-            <div class="menue">
-                <button>About</button>
-                <button>Content</button>
-            </div>
-        </div>
-        <div class="mainImageArea">
-            <img class="mainImage" src="./img/mainvisual.jpg" alt="メイン画像">
-        </div>
-        <div class="about">
-            <h1>About</h1>
-            <div class="aboutContent">
-                <img class="aboutImage" src="./img/about.jpg" alt="about">
-                <div class="aboutContentText">
-                    <p>test name</p>
-                    <p class="aboutDescription">HTML・CSSって意外に奥深いし難しい！！</p>
+            <nav class="navigation">
+                <a class="header__a" href="#about">About</a>
+                <a class="header__a" href="#content">Content</a>
+            </nav>
+        </header>
+        <main>
+            <img class="main__image" src="./img/mainvisual.jpg" alt="メイン画像">
+            <section id="about" class="about">
+                <h1>About</h1>
+                <div class="about__content">
+                    <img class="about__image" src="./img/about.jpg" alt="about">
+                    <div>
+                        <p>test name</p>
+                        <p class="about__p">HTML・CSSって意外に奥深いし難しい！</p>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="contentArea">
-            <h1>Content</h1>
-            <div class="contentList">
-                <div class="content">
-                    <img class="contentImage" src="./img/bicycle1.jpg" alt="自転車1">
-                    <p>自転車1</p>
-                    <p>夕日と自転車</p>
+            </section>
+            <section id="content" class="content">
+                <h1>Content</h1>
+                <div class="content__list">
+                    <div class="content__item">
+                        <img class="content__image" src="./img/bicycle1.jpg" alt="自転車1">
+                        <p>自転車1</p>
+                        <p>夕日と自転車</p>
+                    </div>
+                    <div class="content__item">
+                        <img class="content__image" src="./img/bicycle2.jpg" alt="自転車2">
+                        <p>自転車2</p>
+                        <p>夕日と自転車</p>
+                    </div>
+                    <div class="content__item">
+                        <img class="content__image" src="./img/bicycle3.jpg" alt="自転車3">
+                        <p>自転車3</p>
+                        <p>夕日と自転車</p>
+                    </div>
                 </div>
-                <div class="content">
-                    <img class="contentImage" src="./img/bicycle2.jpg" alt="自転車2">
-                    <p>自転車2</p>
-                    <p>夕日と自転車</p>
-                </div>
-                <div class="content">
-                    <img class="contentImage" src="./img/bicycle3.jpg" alt="自転車3">
-                    <p>自転車3</p>
-                    <p>夕日と自転車</p>
-                </div>
-            </div>
-        </div>
-        <div class="footer">
+            </section>
+        </main>
+        <footer class="footer">
             <p>@2024/09/16</p>
-        </div>
+        </footer>
     </div>
 </body>
 </html>
